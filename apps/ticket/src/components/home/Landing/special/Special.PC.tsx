@@ -7,7 +7,6 @@ import SpecialThird from '@assets/landing-renewal/special-3.svg';
 import SpecialFourth from '@assets/landing-renewal/special-4.svg';
 import { css } from '@emotion/react';
 import { backgroundBlackStyle } from '../backgroundBlackStyle';
-import { ImpressionStartSetHeader } from '../ImpressionStartSetHeader';
 
 export const SpecialPC = () => {
   return (
@@ -84,9 +83,7 @@ export const SpecialPC = () => {
           />
         </FlexBox>
       </div>
-      <ImpressionStartSetHeader color="black">
-        <Spacing size={190} />
-      </ImpressionStartSetHeader>
+      <Spacing size={190} />
     </FlexBox>
   );
 };
