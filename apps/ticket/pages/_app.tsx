@@ -58,6 +58,10 @@ function MyApp({ Component, pageProps, loginData }: MyAppProps) {
           name="viewport"
           content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
         />
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-6683895022461371"
+        ></meta>
       </Head>
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script

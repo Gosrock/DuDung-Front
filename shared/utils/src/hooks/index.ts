@@ -3,3 +3,4 @@ export * from './useResponsive';
 export * from './useInfiniteQueries';
 export * from './useInput';
 export * from './useScreenHeight';
+export * from './useScrollEffect';
