@@ -6,7 +6,6 @@ import SpecialFourth from '@assets/landing-renewal/special-4.svg';
 import { css } from '@emotion/react';
 import { backgroundBlackStyle } from '../backgroundBlackStyle';
 import { ReactNode } from 'react';
-import { ImpressionStartSetHeader } from '../ImpressionStartSetHeader';
 
 export const SpecialMobile = () => {
   return (
@@ -54,9 +53,7 @@ export const SpecialMobile = () => {
           }
         />
       </div>
-      <ImpressionStartSetHeader color="black">
-        <Spacing size={120} />
-      </ImpressionStartSetHeader>
+      <Spacing size={120} />
     </FlexBox>
   );
 };

@@ -1,22 +1,14 @@
-import { Footer, useHeaderColorContext } from '@dudoong/ui';
+import { Footer } from '@dudoong/ui';
 import DDHead from '@components/shared/Layout/NextHead';
 import { css } from '@emotion/react';
 import Media from '@components/shared/Media';
 import { Title } from './title';
-import { ImpressionArea } from '@toss/impression-area';
-import { useEffect } from 'react';
 import { Intro } from './intro';
 import { Feature } from './feature';
 import { Special } from './special';
 import { Outro } from './outro';
 
 const Landing = () => {
-  const { setHeaderColor } = useHeaderColorContext();
-
-  useEffect(() => {
-    setHeaderColor('black');
-  }, []);
-
   return (
     <>
       <DDHead
@@ -33,41 +25,19 @@ const Landing = () => {
         `}
       >
         <Media.Mobile>
-          <ImpressionArea
-            onImpressionStart={() => setHeaderColor('black')}
-            onImpressionEnd={() => setHeaderColor('white')}
-          >
-            <Title.Mobile />
-            <Intro.Mobile />
-          </ImpressionArea>
-          <ImpressionArea onImpressionEnd={() => setHeaderColor('black')}>
-            <Feature.Mobile />
-          </ImpressionArea>
-          <ImpressionArea onImpressionEnd={() => setHeaderColor('white')}>
-            <Special.Mobile />
-          </ImpressionArea>
-          <ImpressionArea>
-            <Outro />
-          </ImpressionArea>
+          <Title.Mobile />
+          <Intro.Mobile />
+          <Feature.Mobile />
+          <Special.Mobile />
+          <Outro />
         </Media.Mobile>
 
         <Media.PC>
-          <ImpressionArea
-            onImpressionStart={() => setHeaderColor('black')}
-            onImpressionEnd={() => setHeaderColor('white')}
-          >
-            <Title.PC />
-          </ImpressionArea>
-          <ImpressionArea onImpressionEnd={() => setHeaderColor('black')}>
-            <Intro.PC />
-            <Feature.PC />
-          </ImpressionArea>
-          <ImpressionArea onImpressionEnd={() => setHeaderColor('white')}>
-            <Special.PC />
-          </ImpressionArea>
-          <ImpressionArea>
-            <Outro />
-          </ImpressionArea>
+          <Title.PC />
+          <Intro.PC />
+          <Feature.PC />
+          <Special.PC />
+          <Outro />
         </Media.PC>
       </main>
       <section>
