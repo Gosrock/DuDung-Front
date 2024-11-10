@@ -1,14 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import styled from '@emotion/styled';
-import { PropsWithChildren, useState } from 'react';
-import {
-  Divider,
-  Header,
-  PopupOptions,
-  ProfileImage,
-  ThemeType,
-  useHeaderColorContext,
-} from '@dudoong/ui';
+import { PropsWithChildren } from 'react';
+import { Divider, Header, PopupOptions, ProfileImage } from '@dudoong/ui';
 import { media } from '@dudoong/ui/src/theme';
 import { useRouter } from 'next/router';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
@@ -37,7 +30,6 @@ const navigatorMap = {
 export const HeaderLayout = ({ children }: PropsWithChildren) => {
   const { push, asPath } = useRouter();
   const { userProfile, isAuthenticated } = useRecoilValue(authState);
-  const { theme } = useHeaderColorContext();
 
   const { Toast } = useToastify();
   const resetAuthState = useResetRecoilState(authState);
@@ -82,7 +74,7 @@ export const HeaderLayout = ({ children }: PropsWithChildren) => {
           }
         />
         {(asPath === '/' || asPath === '/home') && (
-          <Navigator colortheme={theme}>
+          <Navigator>
             <>
               {navigatorMap[asPath].map((link) => (
                 <Link href={link.url} key={link.title}>
@@ -116,13 +108,13 @@ export const HeaderLayout = ({ children }: PropsWithChildren) => {
                 url="/mypage"
                 text="마이페이지"
                 padding={[12, 24]}
-                textColor={theme === 'black' ? 'gray_200' : 'gray_500'}
+                textColor={'gray_500'}
               />
               <Shortcuts
                 onClick={logoutMutate}
                 text="로그아웃"
                 padding={[12, 24]}
-                textColor={theme === 'black' ? 'gray_200' : 'gray_500'}
+                textColor={'gray_500'}
               />
             </>
           ) : (
@@ -130,7 +122,7 @@ export const HeaderLayout = ({ children }: PropsWithChildren) => {
               onClick={handleLogin}
               text="로그인"
               padding={[12, 24]}
-              textColor={theme === 'black' ? 'gray_200' : 'gray_500'}
+              textColor={'gray_500'}
             />
           )}
           <Divider line padding={24} height={12} />
@@ -141,11 +133,12 @@ export const HeaderLayout = ({ children }: PropsWithChildren) => {
                 key={link.title}
                 text={link.title}
                 padding={[12, 24]}
-                textColor={theme === 'black' ? 'gray_200' : 'gray_500'}
+                textColor={'gray_500'}
               />
             ))}
         </MobileHeader>
       )}
+
       {/* 서비스 콘텐츠 */}
       <Content>
         <div>{children}</div>
@@ -188,15 +181,13 @@ const Content = styled.div`
   }
 `;
 
-const Navigator = styled.div<{ colortheme: ThemeType }>`
+const Navigator = styled.div`
   ${media.mobile} {
     display: none;
   }
   position: absolute;
   top: 12px;
   ${({ theme }) => theme.typo.G_Side_15_M}
-  color : ${({ theme, colortheme }) =>
-    colortheme === 'black' ? theme.palette.white : undefined};
   display: flex;
   gap: 36px;
   right: 180px;
@@ -206,8 +197,7 @@ const Navigator = styled.div<{ colortheme: ThemeType }>`
     border-radius: 12px;
 
     &:hover {
-      background-color: ${({ theme, colortheme }) =>
-        colortheme === 'white' && theme.palette.gray_100};
+      background-color: ${({ theme }) => theme.palette.gray_100};
     }
   }
 `;

@@ -1,4 +1,3 @@
-import { HeaderColorProvider } from '@dudoong/ui';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import { HeaderLayout } from './HeaderLayout';
@@ -12,11 +11,7 @@ const Layout = ({ children }: HeaderLayoutProps) => {
   if (asPath === '/login') {
     return <>{children}</>;
   } else {
-    return (
-      <HeaderColorProvider>
-        <HeaderLayout>{children}</HeaderLayout>
-      </HeaderColorProvider>
-    );
+    return <HeaderLayout>{children}</HeaderLayout>;
   }
 };
 
