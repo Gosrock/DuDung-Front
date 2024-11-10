@@ -1,12 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import styled from '@emotion/styled';
 import { PropsWithChildren } from 'react';
-import {
-  Divider,
-  Header,
-  PopupOptions,
-  ProfileImage,
-} from '@dudoong/ui/src/components';
+import { Divider, Header, PopupOptions, ProfileImage } from '@dudoong/ui';
 import { media } from '@dudoong/ui/src/theme';
 import { useRouter } from 'next/router';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
@@ -35,6 +30,7 @@ const navigatorMap = {
 export const HeaderLayout = ({ children }: PropsWithChildren) => {
   const { push, asPath } = useRouter();
   const { userProfile, isAuthenticated } = useRecoilValue(authState);
+
   const { Toast } = useToastify();
   const resetAuthState = useResetRecoilState(authState);
   const { setToast } = useToastify();
@@ -108,15 +104,26 @@ export const HeaderLayout = ({ children }: PropsWithChildren) => {
               />
 
               <Divider line padding={24} height={12} />
-              <Shortcuts url="/mypage" text="마이페이지" padding={[12, 24]} />
+              <Shortcuts
+                url="/mypage"
+                text="마이페이지"
+                padding={[12, 24]}
+                textColor={'gray_500'}
+              />
               <Shortcuts
                 onClick={logoutMutate}
                 text="로그아웃"
                 padding={[12, 24]}
+                textColor={'gray_500'}
               />
             </>
           ) : (
-            <Shortcuts onClick={handleLogin} text="로그인" padding={[12, 24]} />
+            <Shortcuts
+              onClick={handleLogin}
+              text="로그인"
+              padding={[12, 24]}
+              textColor={'gray_500'}
+            />
           )}
           <Divider line padding={24} height={12} />
           {(asPath === '/' || asPath === '/home') &&
@@ -126,10 +133,12 @@ export const HeaderLayout = ({ children }: PropsWithChildren) => {
                 key={link.title}
                 text={link.title}
                 padding={[12, 24]}
+                textColor={'gray_500'}
               />
             ))}
         </MobileHeader>
       )}
+
       {/* 서비스 콘텐츠 */}
       <Content>
         <div>{children}</div>
@@ -143,6 +152,10 @@ export const HeaderLayout = ({ children }: PropsWithChildren) => {
 const Wrapper = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.palette.white};
+
+  ${media.pc} {
+    min-width: 1200px;
+  }
 `;
 
 const PcHeader = styled.div`

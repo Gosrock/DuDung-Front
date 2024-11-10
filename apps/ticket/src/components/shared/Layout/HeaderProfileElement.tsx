@@ -11,6 +11,7 @@ interface HeaderProfileElement {
 }
 const HeaderProfileElement = (props: HeaderProfileElement) => {
   const { name, profileOption, image, handleLogin } = props;
+
   return (
     <>
       {name ? (
@@ -45,7 +46,8 @@ const LoginButton = styled.button`
   border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.palette.black};
   ${({ theme }) => theme.typo.Text_16}
-  line-height:100%;
+  color: ${({ theme }) => theme.palette.black};
+  line-height: 100%;
 `;
 
 export default HeaderProfileElement;

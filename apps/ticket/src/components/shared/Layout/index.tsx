@@ -11,11 +11,7 @@ const Layout = ({ children }: HeaderLayoutProps) => {
   if (asPath === '/login') {
     return <>{children}</>;
   } else {
-    return (
-      <>
-        <HeaderLayout>{children}</HeaderLayout>
-      </>
-    );
+    return <HeaderLayout>{children}</HeaderLayout>;
   }
 };
 

@@ -19,6 +19,7 @@ const Shortcuts = ({
   padding,
 }: ShortcutsProps) => {
   const router = useRouter();
+
   return (
     <StyledListRow
       padding={padding}
@@ -34,7 +35,6 @@ export default Shortcuts;
 
 const StyledListRow = styled(ListRow)`
   cursor: pointer;
-
   transform: scale(1);
   transition: all 0.1s ease-out;
 

@@ -1,11 +1,26 @@
 import { EventDetailResponse, parseDate } from '@dudoong/utils';
 import styled from '@emotion/styled';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 const Summary = ({ detail }: { detail: EventDetailResponse }) => {
+  const [img, setImg] = useState(detail.posterImage);
+
+  useEffect(() => {
+    setImg(detail.posterImage);
+  }, [detail.posterImage]);
+
   return (
     <Wrapper>
       <Poster>
-        <img src={detail.posterImage} alt={detail.name} />
+        <Image
+          src={img}
+          onError={() => setImg('/no-poster.png')}
+          alt={detail.name}
+          width={203}
+          height={287}
+          priority={true}
+        />
       </Poster>
       <Content>
         <div>
@@ -60,8 +75,6 @@ const Poster = styled.div`
   box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.02);
   border-radius: 8px;
   img {
-    width: 204px;
-    height: 287px;
     object-fit: cover;
   }
 `;

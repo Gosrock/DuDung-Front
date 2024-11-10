@@ -21,7 +21,7 @@ export const Header = ({ rightElement, title }: HeaderProps) => {
               (window.location.href = `${window.location.origin}/home`)
             }
           >
-            <Logo />
+            <Logo fill={'#040001'} />
           </button>
           {rightElement}
         </FlexBox>
@@ -48,4 +48,17 @@ const Wrapper = styled(FlexBox)`
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.palette.gray_200};
   box-sizing: border-box;
+  background-color: ${({ theme }) => theme.palette.white};
+
+  transition: color 0.2s;
+  -webkit-transition: background-color 0.2s linear;
+  -ms-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+
+  & * {
+    transition: color 0.2s;
+    -webkit-transition: background-color 0.2s linear;
+    -ms-transition: background-color 0.2s linear;
+    transition: background-color 0.2s linear;
+  }
 `;
