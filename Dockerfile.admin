@@ -1,4 +1,4 @@
-FROM node:16 AS builder
+FROM node:18-alpine AS builder
 # set working directory
 WORKDIR /app
 # install app dependencies
